@@ -32,20 +32,20 @@ export default function ProductCard({ product, showSubcategory }) {
   }
 
   async function addProductToCart(productId) {
-    // let res = await addToCart(productId);
-    // if (res?.data?.status === "success") {
-    //   setNumOfCartItems(res?.data?.numOfCartItems);
-    //   toast.success(res?.data?.message, {
-    //     duration: 2000,
-    //     position: "top-center",
-    //   });
-    // } else {
-    //   res?.response?.data?.message == "Expired Token. please login again"
-    //     ? getOut()
-    //     : toast.error("Failed to add Product", { duration: 2000 });
-    // }
+    let res = await addToCart(productId);
+    if (res?.data?.status === "success") {
+      setNumOfCartItems(res?.data?.numOfCartItems);
+      toast.success(res?.data?.message, {
+        duration: 2000,
+        position: "top-center",
+      });
+    } else {
+      res?.response?.data?.message == "Expired Token. please login again"
+        ? getOut()
+        : toast.error("Failed to add Product", { duration: 2000 });
+    }
 
-    dispatch(addToCart(product));
+    //dispatch(addToCart(product));
   }
 
   const handleAddToCart = async (productId) => {
@@ -146,7 +146,7 @@ export default function ProductCard({ product, showSubcategory }) {
             </span>
           </div>
           <button
-            onClick={() => handleAddToCart(product.id)}
+            onClick={() => addProductToCart(product.id)}
             className="btn bg-main text-white w-100 px-0"
           >
             <i className="fa-solid fa-cart-plus fa-lg pe-2"></i>
