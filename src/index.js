@@ -9,10 +9,15 @@ import "slick-carousel/slick/slick-theme.css";
 import 'react-responsive-pagination/themes/minimal.css';
 import 'animate.css';
 import './index.css';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <App />
+
+    <Provider store={store}>
+        <App />
+    </Provider>
 );
 
